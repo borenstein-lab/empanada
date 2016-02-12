@@ -6,7 +6,7 @@ setup.py
 empanada/__init__.py
 empanada/compute_pathway_abundance.py
 empanada/data/KOvsPATHWAY_BACTERIAL_KEGG_2013_07_15.tab
-empanada/examples/empanada.tab
-empanada/examples/t2d_ko_vs_sample.tab
+empanada/examples/pathway_abundance_empanada.tab
+empanada/examples/simulated_ko_relative_abundance.tab
 scripts/run_empanada.py
 tests/test_empanada.py

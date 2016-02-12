@@ -35,10 +35,7 @@ class EmpanadaTestCase(unittest.TestCase):
         print("Path to examples:" + EmpanadaTestCase.path_to_data)
 
         # run EMPANADA from shell to make sure it works properly
-        # python ~/METAFIT/PyCode/FiShTaCo/fishtaco/compute_pathway_abundance.py -ko Data/t2d_ko_vs_sample.tab -ko2path Data/KOvsPATHWAY_BACTERIAL_KEGG_2013_07_15
-        # -o Data/t2d_pathway_vs_sample_BY_AVG_ABUNDANCE_NON_OVERLAPPING_LKO_FRACTIONAL.tab -threshold 0 -map by_avg_abundance -fraction
-        # -leave_one_ko_out_pathway_support -use_only_non_overlapping_genes; \
-        subprocess.call('run_empanada.py -ko ' + EmpanadaTestCase.path_to_data + '/examples/t2d_ko_vs_sample.tab ' +
+        subprocess.call('run_empanada.py -ko ' + EmpanadaTestCase.path_to_data + '/examples/simulated_ko_relative_abundance.tab ' +
                         ' -ko2path ' + EmpanadaTestCase.path_to_data + '/data/KOvsPATHWAY_BACTERIAL_KEGG_2013_07_15.tab' +
                         ' -o test_empanada.tab -threshold 0 -map by_avg_abundance -fraction' +
                         ' -leave_one_ko_out_pathway_support -use_only_non_overlapping_genes', shell=True)
@@ -46,7 +43,7 @@ class EmpanadaTestCase(unittest.TestCase):
         print("Testing output...")
 
         # assert that the result is equal to the example (up to small difference due to platform and operating system)
-        example = pd.read_table(EmpanadaTestCase.path_to_data + '/examples/empanada.tab', index_col=0)
+        example = pd.read_table(EmpanadaTestCase.path_to_data + '/examples/pathway_abundance_empanada.tab', index_col=0)
         output = pd.read_table('test_empanada.tab', index_col=0)
         example_vals = example.values
         output_vals = output.values

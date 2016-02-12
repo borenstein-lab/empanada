@@ -1,24 +1,22 @@
+
 ====================
 EMPANADA Documentation
 ====================
 
-EMPANADA is a marker genes based framework for metagenomic normalization and accurate profiling of gene abundances in the microbiome,
+EMPANADA is a tool for evidence-based assignment of genes to pathways in metagenomic data,
 developed and maintained by the Borenstein group at the University of Washington.
 
 ============
 Availability
 ============
 
-EMPANADA is available through the following sources:
-
-- As a Python module from GitHub or PyPI (see installation instructions below)
-- As an online tool at: http://elbo.gs.washington.edu/software_empanada.html.
+EMPANADA is available as a Python module from GitHub or PyPI (see installation instructions below)
 
 =======
 License
 =======
 
-EMPANADA is distributed under a BSD license and can be readily incorporated into custom analysis tools.
+EMPANADA is distributed under a non-commercial license (see LICENSE).
 
 =========================
 Installation Instructions
@@ -29,25 +27,23 @@ Prerequisites for installing:
 In order for EMPANADA to run successfully, the following Python modules should be pre-installed on your system:
 
 - Numpy >= 1.6.1 (http://www.numpy.org/)
-- Scipy >= 0.9 (http://www.scipy.org/)
-- Scikit-learn >= 0.15.2 (http://scikit-learn.org/stable/)
 - Pandas >= 0.14 (http://pandas.pydata.org/)
 
 If you have *pip* installed, you can install these packages by running the following command:
 
-``pip install -U numpy scipy scikit-learn pandas``
+``pip install -U numpy pandas``
 
 **Installing EMPANADA:**
 
-To install EMPANADA, download the package from https://github.com/omanor/empanada/archive/1.0.tar.gz
+To install EMPANADA, download the package from https://github.com/borenstein-lab/empanada/archive/0.0.1.tar.gz
 
 After downloading EMPANADA, you’ll need to unzip the file. If you’ve downloaded the release version, do this with the following command:
 
-``tar -xzf empanada-1.0.tar.gz``
+``tar -xzf empanada-0.0.1.tar.gz``
 
 You’ll then change into the new EMPANADA directory as follows:
 
-``cd empanada-1.0``
+``cd empanada-0.0.1``
 
 and install using the following command:
 
@@ -56,9 +52,6 @@ and install using the following command:
 ALTERNATIVELY, you can install EMPANADA directly from PyPI by running:
 
 ``pip install -U empanada``
-
-Note for windows users: Under some windows installations, Scipy may fail when importing the Stats module. Workarounds may be found online, such
-as `here <https://code.google.com/p/pythonxy/issues/detail?id=745>`_.
 
 ============================
 Testing the software package
@@ -70,13 +63,13 @@ After downloading and installing the software, we recommend testing it by runnin
 
 This will invoke a series of tests. A correct output should end with:
 
-``Ran 3 tests in X.XXXXs``
+``Ran 1 tests in X.XXXXs``
 
 ``OK``
 
-===============================
+=================================
 EMPANADA API via the command line
-===============================
+=================================
 The EMPANADA module handles all calculations internally.
 EMPANADA offers an interface to the EMPANADA functionality via the command line and the run_empanada script.
 
@@ -158,20 +151,15 @@ Optional arguments:
 ========
 Examples
 ========
-In the *empanada/examples* directory, the file *simulated_ko_relative_abundance.tab* contains simulated KO abundance measurements of 20 samples described in the
-EMPANADA manuscript. Using this file as input for EMPANADA results in the following files:
 
-- simulated_ko_empanada_Normalized.tab (only normalization)
-- simulated_ko_empanada_Normalized_Corrected_use_generic.tab (normalize and correct using the generic model learned from HMP)
-- simulated_ko_empanada_Normalized_Corrected_learn_model.tab (normalize and correct learning a new model for each sample)
+In the *empanada/examples* directory, the file *simulated_ko_relative_abundance.tab* contains simulated KO abundance measurements of 20 samples.
+Using this file as input for EMPANADA results in the following files:
 
-The commands used were the following (via command line):
+- pathway_abundance_empanada.tab
 
-``run_empanada.py empanada/examples/simulated_ko_relative_abundance.tab -n -perf -v -o empanada/examples/simulated_ko_empanada_Normalized.tab``
+The command used are the following (via command line):
 
-``run_empanada.py empanada/examples/simulated_ko_relative_abundance.tab -n -c use_generic -perf -v -o empanada/examples/simulated_ko_empanada_Normalized_Corrected_use_generic.tab``
-
-``run_empanada.py empanada/examples/simulated_ko_relative_abundance.tab -n -c learn_model -perf -v -o empanada/examples/simulated_ko_empanada_Normalized_Corrected_learn_model.tab``
+``run_empanada.py -ko examples/simulated_ko_relative_abundance.tab -ko2path data/KOvsPATHWAY_BACTERIAL_KEGG_2013_07_15.tab -o examples/pathway_abundance_empanada.tab -threshold 0 -map by_avg_abundance -fraction -leave_one_ko_out_pathway_support -use_only_non_overlapping_genes``
 
 ==================
 Citing Information
@@ -179,10 +167,6 @@ Citing Information
 
 If you use the EMPANADA software, please cite the following paper:
 
-EMPANADA: A marker genes based framework for metagenomic normalization and accurate profiling of gene abundances in the microbiome.
-**Ohad Manor and Elhanan Borenstein.** *Genome Biology*
+Functional variability in the human microbiome: More than meets the eye
+**Ohad Manor and Elhanan Borenstein.** *In preparation*
 
-==================
-Question forum
-==================
-For EMPANADA announcements and questions, including notification of new releases, you can visit the `EMPANADA users forum <https://groups.google.com/forum/#!forum/empanada-users>`_.

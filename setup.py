@@ -14,10 +14,10 @@ def read(*paths):
         return f.read()
 
 setup(name='empanada',
-      version='0.0.1',
+      version='0.0.2',
       classifiers=['License :: Free for non-commercial use'],
       description='EMPANADA: a tool for evidence-based assignment of genes to pathways in metagenomic data',
-      long_description=(read('README.rst') + '\n\n' + read('HISTORY.rst') + '\n\n' + read('AUTHORS.rst') + '\n\n'),
+      long_description=(read('README.rst') + '\n\n' + read('HISTORY.rst') + '\n\n' + read('AUTHORS.rst') + '\n\n' + read('LICENSE') + '\n\n'),
       author='Ohad Manor',
       author_email='omanor@gmail.com',
       url='http://elbo.gs.washington.edu/software_empanada.html',
