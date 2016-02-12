@@ -1,0 +1,12 @@
+include *.py
+include *.rst
+include LICENSE
+
+graft empanada
+graft scripts
+graft tests
+
+global-exclude *.pyc
+global-exclude *.pyo
+global-exclude .git
+global-exclude *~
